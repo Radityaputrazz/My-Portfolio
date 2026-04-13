@@ -1,106 +1,110 @@
-// data
+// work slider data
 const workSlider = {
   slides: [
     {
       images: [
-        {
-          title: 'title',
-          path: '/thumb1.jpg',
-        },
-        {
-          title: 'title',
-          path: '/thumb2.jpg',
-        },
-        {
-          title: 'title',
-          path: '/thumb3.jpg',
-        },
-        {
-          title: 'title',
-          path: '/thumb4.jpg',
-        },
+        { title: 'LIVE PROJECT', path: '/thumb1.jpg' },
+        { title: 'LIVE PROJECT', path: '/thumb2.jpg' },
+        { title: 'LIVE PROJECT', path: '/thumb3.jpg' },
+        { title: 'LIVE PROJECT', path: '/thumb4.jpg' },
       ],
     },
     {
       images: [
-        {
-          title: 'title',
-          path: '/thumb4.jpg',
-        },
-        {
-          title: 'title',
-          path: '/thumb1.jpg',
-        },
-        {
-          title: 'title',
-          path: '/thumb2.jpg',
-        },
-        {
-          title: 'title',
-          path: '/thumb3.jpg',
-        },
+        { title: 'LIVE PROJECT', path: '/thumb4.jpg' },
+        { title: 'LIVE PROJECT', path: '/thumb1.jpg' },
+        { title: 'LIVE PROJECT', path: '/thumb2.jpg' },
+        { title: 'LIVE PROJECT', path: '/thumb3.jpg' },
       ],
     },
   ],
 };
 
-// import swiper react components
+// import
 import { Swiper, SwiperSlide } from "swiper/react";
-
-// import swiper styles
 import 'swiper/css';
-import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
-
-// import required modules
-import { FreeMode, Pagination } from 'swiper';
-
-// icons
+import { Pagination } from 'swiper';
 import { BsArrowRight } from 'react-icons/bs';
+import Image from 'next/image';
+import { motion } from 'framer-motion';
+
 const WorkSlider = () => {
   return (
     <Swiper
-      breakpoints={{
-        320: {
-          slidesPerView: 1,
-          spaceBetween: 15,
-        },
-        640: {
-          slidesPerView: 3,
-          spaceBetween: 15,
-        },
-      }}
-      freeMode={true}
-      pagination={{
-        clickable: true,
-      }}
+      spaceBetween={16}
+      pagination={{ clickable: true }}
       modules={[Pagination]}
-      className="h-[240px] sm:h-[340px]"
+      className="h-auto"
     >
-      {
-        WorkSlider.slides.map((item, index) => {
-          return (
-            <SwiperSlide key={index}>
-              <div className="bg-[rgba(65,47,123,0.15)] h-max rounded-lg px-6 py-8 flex
-                sm:flex-col gap-x-6 sm:gap-x-0 group cursor-pointer hover:bg-[rgba(89,65,169,0.15)]
-                transition-all duration-300">
-                {/* icons */}
-                <div className="text-4xl text-accent mb-4">{item.icon}</div>
-                {/* title & description */}
-                <div className="mb-8">
-                  <div className="mb-2 text-lg">{item.title}</div>
-                  <p className="max-w-[350px] leading-normal">{item.description}</p>
+      {workSlider.slides.map((slide, slideIndex) => (
+        <SwiperSlide key={slideIndex}>
+          {/* Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 sm:grid-rows-2 gap-4">
+            {slide.images.map((image, imgIndex) => (
+              <motion.div
+                key={`${slideIndex}-${imgIndex}`}
+                className="relative rounded-lg overflow-hidden group h-[200px] sm:h-[180px] lg:h-[220px]"
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: imgIndex * 0.2 }}
+              >
+                {/* image wrapper with hover zoom */}
+                <motion.div
+                  className="w-full h-full"
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ duration: 0.4 }}
+                >
+                  <Image
+                    src={image.path}
+                    alt={image.title}
+                    fill
+                    className="object-cover"
+                  />
+                </motion.div>
+
+                {/* overlay */}
+                <div
+                  className="absolute inset-0 bg-gradient-to-l
+                  from-transparent via-[#e838cc] to-[#4a22bd] opacity-0
+                  group-hover:opacity-80 transition-all duration-700"
+                ></div>
+
+                {/* title muncul saat hover */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="flex items-center gap-x-3 tracking-[0.2em] font-extrabold uppercase">
+                    
+                    {/* Text dengan gradient + glow + pulse */}
+                    <span
+                      className="text-2xl font-bold opacity-0 translate-y-full
+                      group-hover:opacity-100 group-hover:translate-y-0
+                      transition-all duration-500 ease-out delay-100
+                      bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400
+                      bg-clip-text text-transparent animate-gradient animate-pulse-glow
+                      [text-shadow:0_0_10px_rgba(255,0,255,0.8),0_0_20px_rgba(0,128,255,0.8)]
+                      group-hover:animate-floatY"
+                    >
+                      LIVE PROJECT
+                    </span>
+
+                    {/* Arrow dengan efek sama */}
+                 <span
+                    className="text-2xl text-white opacity-0 translate-y-full
+                    group-hover:opacity-100 group-hover:translate-y-0
+                    transition-all duration-500 ease-out delay-200
+                    animate-pulse-glow
+                    [text-shadow:0_0_10px_rgba(255,255,255,0.9),0_0_20px_rgba(255,255,255,0.8)]
+                    group-hover:animate-floatX"
+                  >
+                    <BsArrowRight />
+                  </span>
+                  </div>
                 </div>
-                {/* arrow */}
-                <div className="text-3xl">
-                  <RxArrowTopRight className="group-hover:rotate-45 
-                  group-hover:text-accent transition-all duration-300" />
-                </div>
-              </div>
-            </SwiperSlide>
-          );
-        })
-      }
+              </motion.div>
+            ))}
+          </div>
+        </SwiperSlide>
+      ))}
     </Swiper>
   );
 };

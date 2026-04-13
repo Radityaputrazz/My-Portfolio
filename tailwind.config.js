@@ -5,7 +5,7 @@ module.exports = {
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
 
-    // Or if using `src` directory:
+    // Jika pakai folder `src`
     './src/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
@@ -32,18 +32,33 @@ module.exports = {
         circleStar: 'url("/circle-star.svg")',
         site: 'url("/site-bg.svg")',
       },
-      animation: {
-        'spin-slow': 'spin 6s linear infinite',
-      },
       fontFamily: {
         poppins: [`var(--font-poppins)`, 'sans-serif'],
         sora: [`var(--font-sora)`, 'sans-serif'],
       },
-    },
-  },
-  container: {
-    padding: {
-      DEFAULT: '15px',
+      animation: {
+        'spin-slow': 'spin 6s linear infinite',
+        floatX: 'floatX 2s ease-in-out infinite',
+        floatY: 'floatY 3s ease-in-out infinite',
+        floatYDelay: 'floatY 3s ease-in-out infinite 0.5s',
+        floatXY: 'floatXY 3s ease-in-out infinite', // ✅ gabungan X & Y
+      },
+      keyframes: {
+        floatX: {
+          '0%, 100%': { transform: 'translateX(0)' },
+          '50%': { transform: 'translateX(6px)' },
+        },
+        floatY: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-6px)' },
+        },
+        floatXY: {
+          '0%, 100%': { transform: 'translate(0, 0)' },
+          '25%': { transform: 'translateX(6px)' },
+          '50%': { transform: 'translateY(-6px)' },
+          '75%': { transform: 'translateX(-6px)' },
+        },
+      },
     },
   },
   plugins: [require('tailwind-scrollbar')],
