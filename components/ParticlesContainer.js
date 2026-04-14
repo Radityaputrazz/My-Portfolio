@@ -8,13 +8,12 @@ const particlesOptions = {
   fpsLimit: 60,
   interactivity: {
     events: {
-      onClick: { enable: false, mode: 'push' },
+      onClick: { enable: false },
       onHover: { enable: true, mode: 'repulse' },
       resize: true,
     },
     modes: {
-      push: { quantity: 90 },
-      repulse: { distance: 200, duration: 0.4 },
+      repulse: { distance: 150, duration: 0.4 },
     },
   },
   particles: {
@@ -23,25 +22,25 @@ const particlesOptions = {
       color: '#f5d393',
       distance: 150,
       enable: true,
-      opacity: 0.5,
+      opacity: 0.4,
       width: 1,
     },
-    collisions: { enable: true },
+    collisions: { enable: false },
     move: {
       enable: true,
-      speed: 1.5,
+      speed: 1.2,
       direction: 'none',
       random: true,
       straight: false,
       outModes: { default: 'bounce' },
     },
     number: {
-      value: 40,
-      density: { enable: true, area: 800 },
+      value: 30,
+      density: { enable: true, area: 900 },
     },
     opacity: { value: 0.5 },
     shape: { type: 'circle' },
-    size: { value: { min: 1, max: 5 } },
+    size: { value: { min: 1, max: 4 } },
   },
   detectRetina: true,
 };

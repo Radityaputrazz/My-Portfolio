@@ -28,14 +28,14 @@ const Nav = () => {
           <Link
             key={link.path}
             href={link.path}
-            className={`relative flex items-center group hover:text-accent transition-all duration-300 ${
-              link.path === pathname ? 'text-accent' : ''
+            className={`relative flex flex-col xl:flex-row items-center gap-y-1 group hover:text-accent transition-all duration-300 ${
+              link.path === pathname ? 'text-accent' : 'text-white/70'
             }`}
           >
-            {/* Tooltip */}
+            {/* Tooltip — desktop only */}
             <div className="absolute right-0 hidden xl:group-hover:flex pr-14 opacity-0 group-hover:opacity-100 transition-all duration-300">
-              <div className="relative flex items-center px-4 py-2 rounded-xl shadow-lg bg-gradient-to-r from-white/30 to-white/10 backdrop-blur-md border border-white/20 animate-pulse-glow">
-                <span className="text-sm font-semibold uppercase tracking-wider bg-gradient-to-r from-pink-500 via-red-400 to-orange-400 bg-clip-text text-transparent">
+              <div className="relative flex items-center px-4 py-2 rounded-xl shadow-lg bg-gradient-to-r from-white/30 to-white/10 backdrop-blur-md border border-white/20">
+                <span className="text-sm font-semibold uppercase tracking-wider bg-gradient-to-r from-pink-500 via-red-400 to-orange-400 bg-clip-text text-transparent whitespace-nowrap">
                   {link.tooltip}
                 </span>
                 <div className="absolute -right-2 w-0 h-0 border-l-8 border-l-white/30 border-y-8 border-y-transparent" />
@@ -43,7 +43,14 @@ const Nav = () => {
             </div>
 
             {/* Icon */}
-            {link.icon}
+            <span className="text-2xl xl:text-xl">{link.icon}</span>
+
+            {/* Label — mobile only */}
+            <span className={`xl:hidden text-[10px] font-medium tracking-wide transition-all duration-300 ${
+              link.path === pathname ? 'text-accent' : 'text-white/50'
+            }`}>
+              {link.name}
+            </span>
           </Link>
         ))}
       </div>
