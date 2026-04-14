@@ -1,55 +1,44 @@
-// components
 import WorkSlider from '../../components/WorkSlider';
-import Bulb from '../../components/Bulb';
 import Circles from '../../components/Circles';
-
-// framer motion
 import { motion } from 'framer-motion';
 import { fadeIn } from '../../variants';
 
 const Work = () => {
   return (
-    <div className="relative h-full bg-primary/30 py-24 xl:py-36 flex items-center">
+    <section className='min-h-screen bg-primary/30 py-16 xl:py-24 flex items-center relative'>
       <Circles />
+      <div className='container mx-auto px-4'>
+        <div className='flex flex-col xl:flex-row items-start gap-8 xl:gap-16'>
 
-      <div className="container mx-auto flex flex-col xl:flex-row gap-x-8">
-        {/* text section */}
-        <div className="flex flex-col xl:w-[30vw] text-center lg:text-left mb-8 xl:mb-0">
-          <motion.h2
+          <motion.div
             variants={fadeIn('up', 0.3)}
             initial="hidden"
             animate="show"
             exit="hidden"
-            className="h2 xl:mt-8"
+            className='flex flex-col xl:w-[300px] flex-shrink-0'
           >
-            Featured <span className="text-accent">Projects</span>
-          </motion.h2>
+            <h2 className='h2 text-center xl:text-left'>
+              My Work <span className='text-accent'>.</span>
+            </h2>
+            <p className='text-sm sm:text-base leading-relaxed text-center xl:text-left max-w-[380px] mx-auto xl:mx-0'>
+              Showcasing my expertise in building modern, scalable, and
+              responsive web applications for diverse clients.
+            </p>
+          </motion.div>
 
-          <motion.p
-            variants={fadeIn('up', 0.4)}
+          <motion.div
+            variants={fadeIn('down', 0.5)}
             initial="hidden"
             animate="show"
             exit="hidden"
-            className="mb-6 max-w-[400px] mx-auto lg:mx-0 text-gray-300"
+            className='flex-1 min-w-0 w-full'
           >
-            Explore a curated selection of my work as a Full-Stack Developer. From engaging frontend interfaces to robust backend solutions and APIs, these projects showcase scalable, modern, and user-friendly applications built with best practices.
-          </motion.p>
+            <WorkSlider />
+          </motion.div>
+
         </div>
-
-        {/* slider */}
-        <motion.div
-          variants={fadeIn('down', 0.6)}
-          initial="hidden"
-          animate="show"
-          exit="hidden"
-          className="w-full xl:max-w-[65%]"
-        >
-          <WorkSlider />
-        </motion.div>
       </div>
-
-      <Bulb />
-    </div>
+    </section>
   );
 };
 

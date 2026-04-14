@@ -1,46 +1,69 @@
 import React, { useState } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { fadeIn } from "../../variants";
-import CountUp from "react-countup";
 
-// components
-import Avatar from '../../components/Avatar';
-import Circles from '../../components/Circles';
+import {
+  FaHtml5, FaCss3, FaJs, FaReact, FaNodeJs,
+  FaGitAlt, FaFigma, FaPhp, FaCloud, FaKey
+} from "react-icons/fa";
+import {
+  SiNextdotjs, SiMongodb, SiPostgresql, SiMysql,
+  SiJest, SiMicrosoftazure
+} from "react-icons/si";
+import {
+  RiServerFill, RiDatabaseLine, RiBugLine,
+  RiShieldLine, RiLockLine
+} from "react-icons/ri";
 
-// icons
-import { FaHtml5, FaCss3, FaJs, FaReact, FaWordpress, FaFigma } from "react-icons/fa";
-import { SiNextdotjs, SiFramer, SiAdobexd, SiAdobephotoshop } from "react-icons/si";
-
-// about data
 const aboutData = [
   {
-    title: 'Skills',
-    info: [
-      { title: 'Web Development', icons: [<FaHtml5 />, <FaCss3 />, <FaJs />, <FaReact />, <SiNextdotjs />, <SiFramer />, <FaWordpress />] },
-      { title: 'UI/UX Design', icons: [<FaFigma />, <SiAdobexd />, <SiAdobephotoshop />] },
+    title: "Skills",
+    categories: [
+      {
+        category: "Frontend",
+        skills: [
+          { title: "HTML", icon: FaHtml5 },
+          { title: "CSS", icon: FaCss3 },
+          { title: "JavaScript", icon: FaJs },
+          { title: "React", icon: FaReact },
+          { title: "Next.js", icon: SiNextdotjs },
+        ],
+      },
+      {
+        category: "Backend",
+        skills: [
+          { title: "Node.js", icon: FaNodeJs },
+          { title: "MySQL", icon: SiMysql },
+          { title: "PostgreSQL", icon: SiPostgresql },
+          { title: "PHP", icon: FaPhp },
+          { title: "REST API", icon: RiServerFill },
+          { title: "OAuth", icon: FaKey },
+        ],
+      },
+      {
+        category: "Supporting Skills",
+        skills: [
+          { title: "Git", icon: FaGitAlt },
+          { title: "Jest", icon: SiJest },
+        ],
+      },
     ],
   },
   {
-    title: 'Awards',
+    title: "Experience",
     info: [
-      { title: 'Webby Awards - Honoree', stage: '2011 - 2012' },
-      { title: 'Adobe Design Achievement - Finalist', stage: '2009 - 2010' },
+      { title: "Senior Full-Stack Developer — XYZ Company", stage: "2015 – 2023" },
+      { title: "Intern — Bellagio Mansion", stage: "2024" },
+      { title: "Intern — SMA CENDRAWASIH II", stage: "2022" },
     ],
   },
   {
-    title: 'Experience',
+    title: "Credentials",
     info: [
-      { title: 'Senior Full-Stack Developer - XYZ Company', stage: '2015 - 2023' },
-      { title: 'Frontend Developer - ABC Agency', stage: '2012 - 2015' },
-      { title: 'Intern - DEF Corporation', stage: '2010 - 2012' },
-    ],
-  },
-  {
-    title: 'Credentials',
-    info: [
-      { title: 'B.Sc Computer Science - ABC University', stage: '2010' },
-      { title: 'Certified Full-Stack Developer', stage: '2012' },
-      { title: 'Adobe Certified Designer', stage: '2008' },
+      { title: "Certified Full-Stack Developer", stage: "2024" },
+      { title: "Bachelor of Informatics Engineering — Budi Luhur University", stage: "2024" },
+      { title: "Algorithm Certified", stage: "2022" },
     ],
   },
 ];
@@ -49,115 +72,126 @@ const About = () => {
   const [index, setIndex] = useState(0);
 
   return (
-    <div className="relative bg-primary/30 text-white py-16 xl:py-24">
-      <Circles />
+    <section className="min-h-screen bg-primary/30 py-12 xl:py-24 text-white flex items-center">
+      <div className="container mx-auto px-4">
+        <div className="flex flex-col xl:flex-row gap-12 xl:gap-16 items-center xl:items-start">
 
-      {/* Avatar */}
-      <motion.div
-        variants={fadeIn('right', 0.2)}
-        initial="hidden"
-        animate="show"
-        className="hidden xl:flex absolute top-1/2 -translate-y-1/2 -left-[370px]"
-      >
-        <Avatar />
-      </motion.div>
-
-      <div className="container mx-auto flex flex-col xl:flex-row items-start gap-x-8">
-        {/* Text & Counters */}
-        <div className="flex-1 flex flex-col justify-start">
-          <motion.h2
-            variants={fadeIn('right', 0.2)}
-            initial="hidden"
-            animate="show"
-            className="h2 mb-6"
-          >
-            Building <span className="text-accent">scalable web applications</span> that turn ideas into reality.
-          </motion.h2>
-
-          <motion.p
-            variants={fadeIn('right', 0.4)}
-            initial="hidden"
-            animate="show"
-            className="max-w-[500px] text-gray-300 mb-8"
-          >
-            With over 10 years of experience as a Full-Stack Developer, I craft **modern, responsive, and high-performance web applications**, helping businesses deliver outstanding digital solutions.
-          </motion.p>
-
-          {/* Counters */}
+          {/* Avatar */}
           <motion.div
-            variants={fadeIn('right', 0.6)}
-            initial="hidden"
-            animate="show"
-            className="flex flex-wrap gap-x-6 gap-y-4"
+            initial={{ opacity: 0, x: -40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="flex-shrink-0 flex flex-col items-center gap-4"
           >
-            <div className="flex-1 text-left">
-              <div className="text-3xl xl:text-4xl font-extrabold text-accent">
-                <CountUp start={0} end={10} duration={5} />+
-              </div>
-              <div className="text-xs text-gray-200 uppercase tracking-[1px]">Years Experience</div>
-            </div>
-
-            <div className="flex-1 text-left">
-              <div className="text-3xl xl:text-4xl font-extrabold text-accent">
-                <CountUp start={0} end={250} duration={5} />+
-              </div>
-              <div className="text-xs text-gray-200 uppercase tracking-[1px]">Clients Served</div>
-            </div>
-
-            <div className="flex-1 text-left">
-              <div className="text-3xl xl:text-4xl font-extrabold text-accent">
-                <CountUp start={0} end={650} duration={5} />+
-              </div>
-              <div className="text-xs text-gray-200 uppercase tracking-[1px]">Projects Completed</div>
-            </div>
-
-            <div className="flex-1 text-left">
-              <div className="text-3xl xl:text-4xl font-extrabold text-accent">
-                <CountUp start={0} end={8} duration={5} />+
-              </div>
-              <div className="text-xs text-gray-200 uppercase tracking-[1px]">Awards Won</div>
+           <div className="relative w-[200px] h-[260px] xl:w-[260px] xl:h-[400px]">
+            <Image
+             src="/ree.png"
+             alt="Profile avatar"
+             fill
+             className="object-cover object-top"
+             priority
+            />
+</div>
+            <div className="text-center">
+              <h3 className="text-white font-semibold text-lg">Raditya Ananda Putra</h3>
+              <p className="text-white/50 text-sm">Full-Stack Developer</p>
             </div>
           </motion.div>
-        </div>
 
-        {/* Info Tabs */}
-        <motion.div
-          variants={fadeIn('left', 0.4)}
-          initial="hidden"
-          animate="show"
-          className="flex flex-col w-full xl:max-w-[48%]"
-        >
-          <div className="flex gap-x-4 xl:gap-x-8 mb-4">
-            {aboutData.map((item, itemIndex) => (
-              <div
-                key={itemIndex}
-                className={`cursor-pointer capitalize xl:text-lg relative 
-                  ${index === itemIndex ? 'text-accent after:w-full after:bg-accent' : 'text-white/60'}
-                  after:w-8 after:h-[2px] after:bg-white after:absolute after:-bottom-1 after:left-0`}
-                onClick={() => setIndex(itemIndex)}
-              >
-                {item.title}
+          {/* Right — heading, description & tabs */}
+          <div className="flex-1 min-w-0 flex flex-col gap-8">
+
+            {/* Heading & description */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            >
+              <h2 className="text-2xl sm:text-3xl font-bold leading-snug mb-4 text-center xl:text-left">
+                Building{" "}
+                <span className="text-accent">robust web applications</span>{" "}
+                that deliver real world results.
+              </h2>
+              <p className="text-white/60 text-sm sm:text-base leading-relaxed text-center xl:text-left">
+                With a decade of experience as a{" "}
+                <span className="text-accent">Full-Stack Developer</span>, I craft
+                modern, responsive, and high-performance web applications that help
+                businesses deliver outstanding digital solutions.
+              </p>
+            </motion.div>
+
+            {/* Tabs */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
+              {/* Tab nav */}
+              <div className="flex gap-6 mb-6 border-b border-white/10 pb-2">
+                {aboutData.map((item, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setIndex(idx)}
+                    className={`text-sm sm:text-base pb-1 transition-all duration-200 border-b-2 -mb-[2px]
+                      ${index === idx
+                        ? "text-accent border-accent font-semibold"
+                        : "text-white/50 border-transparent hover:text-accent"
+                      }`}
+                  >
+                    {item.title}
+                  </button>
+                ))}
               </div>
-            ))}
-          </div>
 
-          <div className="flex flex-col gap-y-4 items-center xl:items-start">
-            {aboutData[index].info.map((item, itemIndex) => (
-              <div key={itemIndex} className="flex flex-col md:flex-row gap-x-2 items-center text-white/60">
-                <div className="font-light">{item.title}</div>
-                {item.stage && <div className="hidden md:flex">-</div>}
-                <div>{item.stage}</div>
-                <div className="flex gap-x-4">
-                  {item.icons?.map((icon, iconIndex) => (
-                    <div key={iconIndex} className="text-2xl text-white">{icon}</div>
+              {/* Skills tab */}
+              {aboutData[index].title === "Skills" && (
+                <div className="flex flex-col gap-6">
+                  {aboutData[index].categories.map((cat, catIdx) => (
+                    <div key={catIdx}>
+                      <h3 className="text-xs font-semibold uppercase tracking-widest text-accent mb-3">
+                        {cat.category}
+                      </h3>
+                      <div className="flex flex-wrap gap-2">
+                        {cat.skills.map((skill, i) => {
+                          const Icon = skill.icon;
+                          return (
+                            <div
+                              key={i}
+                              className="flex items-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-md px-3 py-2 text-sm transition-colors duration-200"
+                            >
+                              {Icon && <Icon className="text-accent text-base" />}
+                              <span>{skill.title}</span>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
                   ))}
                 </div>
-              </div>
-            ))}
+              )}
+
+              {/* Experience & Credentials tab */}
+              {aboutData[index].title !== "Skills" && (
+                <div className="flex flex-col gap-3">
+                  {aboutData[index].info.map((item, i) => (
+                    <div
+                      key={i}
+                      className="bg-white/5 border border-white/10 rounded-md px-4 py-3"
+                    >
+                      <p className="text-sm font-medium">{item.title}</p>
+                      {item.stage && (
+                        <p className="text-xs text-white/50 mt-1">{item.stage}</p>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </motion.div>
+
           </div>
-        </motion.div>
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

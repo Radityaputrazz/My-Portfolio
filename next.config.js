@@ -1,7 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-  // No need to specify swcMinify unless needed
-}
+  images: {
+    unoptimized: true,
+    dangerouslyAllowSVG: true,
+  },
+  reactStrictMode: false,
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

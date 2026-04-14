@@ -27,6 +27,10 @@ yarn-error.log*
 
 # local env files
 .env*.local
+# .env.local
+NEXT_PUBLIC_EMAILJS_SERVICE_ID=service_eupi67h
+NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=template_7jvsws3
+NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=69DdENAfA7y87Q7GG
 
 # vercel
 .vercel

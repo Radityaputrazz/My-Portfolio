@@ -1,32 +1,23 @@
-// links
 import Link from 'next/link';
-
-// icons
-import {
-  RiYoutubeLine,
-  RiInstagramLine,
-  RiFacebookLine,
-  RiDribbbleLine,
-  RiBehanceLine,
-  RiPinterestLine,
-} from 'react-icons/ri';
+import { RiYoutubeLine, RiInstagramLine, RiGithubLine, RiPinterestLine, RiThreadsLine } from 'react-icons/ri';
 
 const socialsData = [
-  { icon: <RiYoutubeLine />, href: '#' },
-  { icon: <RiInstagramLine />, href: '#' },
-  { icon: <RiFacebookLine />, href: '#' },
-  { icon: <RiDribbbleLine />, href: '#' },
-  { icon: <RiBehanceLine />, href: '#' },
-  { icon: <RiPinterestLine />, href: '#' },
+  { icon: <RiYoutubeLine />,  href: 'https://youtube.com' },
+  { icon: <RiInstagramLine />, href: 'https://instagram.com/rdtyaptraa' },
+  { icon: <RiGithubLine />,   href: 'https://github.com' },
+  { icon: <RiPinterestLine />, href: 'https://pinterest.com' },
+  { icon: <RiThreadsLine />, href: 'https://threads.net/@rdtyaptraa' },
 ];
 
 const Socials = () => {
   return (
-    <div className="flex flex-wrap justify-center xl:justify-start items-center gap-4 md:gap- text-lg md:text-xl">
-      {socialsData.map((item, index) => (
+    <div className="flex items-center gap-4 text-lg md:text-xl">
+      {socialsData.map((item) => (
         <Link
-          key={index}
+          key={item.href}
           href={item.href}
+          target="_blank"
+          rel="noopener noreferrer"
           className="hover:text-accent transition-all duration-300"
         >
           {item.icon}

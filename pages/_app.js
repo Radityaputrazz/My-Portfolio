@@ -1,11 +1,10 @@
-// pages/_app.js
-import "@/styles/globals.css"; // ✅ Hanya di sini
+import "@/styles/globals.css";
+import { useRouter } from "next/router";
+import { AnimatePresence, motion } from "framer-motion";
+import { ThemeProvider } from "next-themes";
 
 import Layout from "@/components/Layout";
-import { ThemeProvider } from "next-themes";
 import Transition from "@/components/Transition";
-import { AnimatePresence, motion } from "framer-motion";
-import { useRouter } from "next/router";
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
