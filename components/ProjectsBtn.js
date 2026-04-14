@@ -11,8 +11,8 @@ const ProjectsBtn = () => {
       >
         <Image
           src="/mycv.png"
-          width={151}
-          height={158}
+          width={161}
+          height={168}
           alt="Projects"
           className="animate-spin-slow w-full h-full max-w-[161px] max-h-[168px]"
         />
