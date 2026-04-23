@@ -124,7 +124,8 @@ await emailjs.send(
 ├── tailwind.config.js
 └── next.config.js
 ```
-📸 Tampilan
+## Tampilan
+
 📧 Kontak: [Radityaputra.dev@gmail.com]
 🔗 Live Demo: [https://my-portfolio1-kappa-nine.vercel.app/]
 
