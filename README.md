@@ -36,14 +36,14 @@ A modern, responsive personal portfolio website built with Next.js, Tailwind CSS
 
 ### Prerequisites
 
-- Node.js 18+
+- Node.js 
 - npm
 
 ### Installation
 
 ```bash
 # Clone the repository
-git clone https://github.com/username/portfolio.git
+git clone https://github.com/Radityaputrazz/My-Portfolio.git
 
 # Navigate to the project directory
 cd portfolio
@@ -124,6 +124,9 @@ await emailjs.send(
 ├── tailwind.config.js
 └── next.config.js
 ```
+📸 Tampilan
+📧 Kontak: [Radityaputra.dev@gmail.com]
+🔗 Live Demo: [https://my-portfolio1-kappa-nine.vercel.app/]
 
 ## License
 
