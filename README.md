@@ -131,4 +131,4 @@ await emailjs.send(
 
 ## License
 
-MIT
+[MIT License](https://gh.io/mit)
